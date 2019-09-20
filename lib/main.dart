@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermic/pages/home_page.dart';
 import 'package:fluttermic/pages/login_page.dart';
+import 'package:fluttermic/pages/sublevel/detalles/detalleOdt.dart';
 import 'package:fluttermic/pages/sublevel/serviciosabiertos_page.dart';
 import 'package:fluttermic/pages/sublevel/servicioscerrados_page.dart';
 import 'package:fluttermic/pages/sublevel/serviciosnuevos_page.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           'home' : (BuildContext context) => HomePage(),
           'nuevas' : (BuildContext context) => ServiciosNuevosPage(),
           'abiertas' : (BuildContext context) => ServiciosAbiertosPage(),
-          'cerradas' : (BuildContext context) => ServiciosCerradosPage()
+          'cerradas' : (BuildContext context) => ServiciosCerradosPage(),
+          'detalleOdt' : (BuildContext context) => DetalleOdtPage()
         },
         theme: ThemeData(primaryColor: Colors.blueAccent),
       ),

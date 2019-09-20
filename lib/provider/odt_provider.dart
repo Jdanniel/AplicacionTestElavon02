@@ -38,16 +38,12 @@ class OdtProvider{
       headers: headerJson
     );
 
-    final Map<String,dynamic> decodeData = json.decode(resp.body);
-    final List<Odtmodel> listaOdts = new List();
-
+    final decodeData = json.decode(resp.body) as List;
+    final odtList = decodeData.map((map) => Odtmodel.fromJson(map)).toList();
+    
     if(decodeData == null) return [];
 
-    decodeData.forEach((id, prod){
-      final odtTemp = Odtmodel.fromJson(prod);
-      listaOdts.add(odtTemp);
-    });
-    return listaOdts;
+    return odtList;
   }
 
 }

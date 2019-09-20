@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<Odtmodel> odtmodelFromJson(String str) => List<Odtmodel>.from(json.decode(str).map((x) => Odtmodel.fromJson(x)));
+Odtmodel odtmodelFromJson(String str) => Odtmodel.fromJson(json.decode(str));
 
-String odtmodelToJson(List<Odtmodel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String odtmodelToJson(Odtmodel data) => json.encode(data.toJson());
 
 class Odtmodel {
     String odt;
@@ -18,17 +18,17 @@ class Odtmodel {
     String colonia;
 
     Odtmodel({
-        this.odt,
-        this.noAfiliacion,
-        this.fecGarantia,
-        this.negocio,
-        this.idAr,
-        this.estado,
-        this.colonia,
+        this.odt = '',
+        this.noAfiliacion = '',
+        this.fecGarantia = '',
+        this.negocio = '',
+        this.idAr = 0,
+        this.estado = '',
+        this.colonia = '',
     });
 
     factory Odtmodel.fromJson(Map<String, dynamic> json) => Odtmodel(
-        odt: json["ODT"],
+        odt: json["NO_AR"],
         noAfiliacion: json["NO_AFILIACION"],
         fecGarantia: json["FEC_GARANTIA"],
         negocio: json["NEGOCIO"],
@@ -38,7 +38,7 @@ class Odtmodel {
     );
 
     Map<String, dynamic> toJson() => {
-        "ODT": odt,
+        "NO_AR": odt,
         "NO_AFILIACION": noAfiliacion,
         "FEC_GARANTIA": fecGarantia,
         "NEGOCIO": negocio,
