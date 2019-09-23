@@ -31,7 +31,9 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: <Widget>[
                   _titulo(),
-                  _botonesIniciales(context)
+                  //_botonesIniciales(context)
+                  //_cardsIniciales(context)
+                  _contenedorCards(context)
                 ],
               ),
             ),
@@ -46,7 +48,45 @@ class _HomePageState extends State<HomePage> {
     setState((){
       nuevas = total.nuevas;
     });
-    
+  }
+
+  Widget _contenedorCards(BuildContext _context){
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _cardRedondeado('Servicios','Nuevos', Icons.new_releases),
+          _cardRedondeado('Servicios','Abiertos', Icons.lock_open),
+          _cardRedondeado('Servicios','Cerrados', Icons.lock),
+        ],
+      ),
+    );
+  }
+
+  Widget _cardRedondeado(String titulo, String subtitulo, IconData icono){
+
+    return Container(
+            width: 400.0,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0)
+              ),
+              elevation: 10.0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    contentPadding: EdgeInsets.all(15.0),
+                    leading: Icon(icono, size: 65.0,),
+                    title: Text(titulo, style: TextStyle(fontSize: 25.0),),
+                    subtitle: Text(subtitulo, style: TextStyle(fontSize: 20.0),),
+                  )
+                ],
+              ),
+            ),
+          );
+        
+
   }
 
   Widget _titulo() {
@@ -56,10 +96,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text("Hola", style: TextStyle(color: Colors.white, fontSize:40.0, fontWeight: FontWeight.bold),),
             Text(prefs.usuarioNombre,style: TextStyle(
               color: Colors.white,
-              fontSize: 40.0,
-              fontWeight: FontWeight.bold
+              fontSize: 30.0,
             ),),
             SizedBox(
               height: 10.0,
